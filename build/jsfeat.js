@@ -4,6 +4,7 @@
 
 // namespace ?
 var jsfeat = jsfeat || { REVISION: 'ALPHA' };
+
 /**
  * @author Eugene Zatepyakin / http://inspirit.ru/
  */
@@ -236,6 +237,7 @@ var jsfeat = jsfeat || { REVISION: 'ALPHA' };
     global.keypoint_t = keypoint_t;
 
 })(jsfeat);
+
 /**
  * @author Eugene Zatepyakin / http://inspirit.ru/
  */
@@ -315,6 +317,7 @@ var jsfeat = jsfeat || { REVISION: 'ALPHA' };
     cache.allocate(30, 640*4);
 
 })(jsfeat);
+
 /**
  * @author Eugene Zatepyakin / http://inspirit.ru/
  */
@@ -729,6 +732,7 @@ var jsfeat = jsfeat || { REVISION: 'ALPHA' };
     global.math = math;
 
 })(jsfeat);
+
 /**
  * @author Eugene Zatepyakin / http://inspirit.ru/
  *
@@ -2310,6 +2314,7 @@ var jsfeat = jsfeat || { REVISION: 'ALPHA' };
     global.motion_estimator = motion_estimator;
 
 })(jsfeat);
+
 /**
  * @author Eugene Zatepyakin / http://inspirit.ru/
  */
@@ -2940,12 +2945,12 @@ var jsfeat = jsfeat || { REVISION: 'ALPHA' };
                 var height = img.rows;
                 var step = width;
 
-                min_theta = 0.0;
-                max_theta = Math.PI;
+                var min_theta = 0.0;
+                var max_theta = Math.PI;
 
-                numangle = Math.round((max_theta - min_theta) / theta_res);
-                numrho = Math.round(((width + height) * 2 + 1) / rho_res);
-                irho = 1.0 / rho_res;
+                var numangle = Math.round((max_theta - min_theta) / theta_res);
+                var numrho = Math.round(((width + height) * 2 + 1) / rho_res);
+                var irho = 1.0 / rho_res;
 
                 var accum = new Int32Array((numangle+2) * (numrho+2)); //typed arrays are initialized to 0
                 var tabSin = new Float32Array(numangle);
@@ -2975,7 +2980,7 @@ var jsfeat = jsfeat || { REVISION: 'ALPHA' };
 
                 // stage 2. find local maximums
                 //TODO: Consider making a vector class that uses typed arrays
-                _sort_buf = new Array();
+                var _sort_buf = new Array();
                 for(var r = 0; r < numrho; r++ ) {
                     for(var n = 0; n < numangle; n++ ) {
                         var base = (n+1) * (numrho+2) + r+1;
@@ -2993,9 +2998,9 @@ var jsfeat = jsfeat || { REVISION: 'ALPHA' };
                 });
 
                 // stage 4. store the first min(total,linesMax) lines to the output buffer
-                linesMax = Math.min(numangle*numrho, _sort_buf.length);
-                scale = 1.0 / (numrho+2);
-                lines = new Array();
+                var linesMax = Math.min(numangle*numrho, _sort_buf.length);
+                var scale = 1.0 / (numrho+2);
+                var lines = new Array();
                 for( var i = 0; i < linesMax; i++ ) {
                     var idx = _sort_buf[i];
                     var n = Math.floor(idx*scale) - 1;
@@ -3564,6 +3569,7 @@ var jsfeat = jsfeat || { REVISION: 'ALPHA' };
     global.imgproc = imgproc;
 
 })(jsfeat);
+
 /**
  * @author Eugene Zatepyakin / http://inspirit.ru/
  *
@@ -3818,6 +3824,7 @@ The references are:
     fast_corners.set_threshold(20); // set default
 
 })(jsfeat);
+
 /**
  * @author Eugene Zatepyakin / http://inspirit.ru/
  *
@@ -3918,6 +3925,7 @@ The references are:
     global.yape06 = yape06;
 
 })(jsfeat);
+
 /**
  * @author Eugene Zatepyakin / http://inspirit.ru/
  *
@@ -4692,6 +4700,7 @@ The references are:
     global.orb = orb;
 
 })(jsfeat);
+
 /**
  * @author Eugene Zatepyakin / http://inspirit.ru/
  *
@@ -4938,6 +4947,7 @@ The references are:
     global.optical_flow_lk = optical_flow_lk;
 
 })(jsfeat);
+
 /**
  * @author Eugene Zatepyakin / http://inspirit.ru/
  *
@@ -5228,6 +5238,7 @@ The references are:
     global.haar = haar;
 
 })(jsfeat);
+
 /**
  * BBF: Brightness Binary Feature
  *
@@ -5622,6 +5633,7 @@ The references are:
     global.bbf = bbf;
 
 })(jsfeat);
+
 /**
  * @author Eugene Zatepyakin / http://inspirit.ru/
  */
@@ -5637,3 +5649,4 @@ The references are:
         module.exports = lib;
     }
 })(jsfeat);
+
